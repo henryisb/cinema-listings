@@ -1,1 +1,1 @@
-# cinema-listings
+# Cinema Listings
