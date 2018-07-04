@@ -25,34 +25,27 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func handlerCinemas(w http.ResponseWriter, r *http.Request) {
+	// get postcode from path
 	pathVar := mux.Vars(r)
 	postcode := pathVar["postcode"]
+
 	cinemas := getCinemasByPostcode(postcode)
 
 	showingResponse := ShowingResponse{}
 
+	// set response for showings
 	for _, v := range cinemas.Cinemas {
 		if v.Distance < 10.0 {
 			showings := getShowingsByCinemaID(v.ID, v.Name)
-			for _, vals := range showings.Listings {
-				showingResponse.AddListing(vals)
-				fmt.Print(v.Name)
-			}
-
+			showingResponse.AddListing(showings.Listings, v.Name)
 		}
 	}
-	// fmt.Println("Cinema :")
-	// for _, v := range showingResponse.ShowingList {
-	// 	fmt.Println(v.Title + ":")
-	// 	for a, b := range v.Times {
-	// 		fmt.Print(b)
-	// 		if a < len(v.Times)-1 {
-	// 			fmt.Print(", ")
-	// 		}
-	// 	}
-	// 	fmt.Print("\n\n")
-	// }
-	fmt.Println(showingResponse)
+
+	// map to json
+	jsonResp := json.NewEncoder(w).Encode(showingResponse)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, jsonResp)
 }
 
 func newRouter() *mux.Router {
@@ -85,14 +78,21 @@ type Listing struct {
 	Times []string
 }
 
+// ShowingList for the cinema and listing
+type ShowingList struct {
+	Name    string
+	Listing []Listing
+}
+
 // ShowingResponse to send back with list of listing
 type ShowingResponse struct {
-	ShowingList []Listing
+	ShowingList []ShowingList
 }
 
 // AddListing for appending the to the list of showings for response
-func (showingResponse *ShowingResponse) AddListing(listing Listing) []Listing {
-	showingResponse.ShowingList = append(showingResponse.ShowingList, listing)
+func (showingResponse *ShowingResponse) AddListing(listing []Listing, name string) []ShowingList {
+	showingEntity := ShowingList{name, listing}
+	showingResponse.ShowingList = append(showingResponse.ShowingList, showingEntity)
 	return showingResponse.ShowingList
 }
 
