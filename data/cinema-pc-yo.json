@@ -1,0 +1,30 @@
+{
+  "postcode": "yo264wy",
+  "cinemas": [
+    {
+      "name": "City Screen Picturehouse, York",
+      "id": "4370",
+      "distance": 0.66
+    },
+    {
+      "name": "VUE York, Rawcliffe",
+      "id": "9467",
+      "distance": 2.1
+    },
+    {
+      "name": "Wetherby Film Theatre, North Wetherby",
+      "id": "10660",
+      "distance": 11.9
+    },
+    {
+      "name": "Odeon Harrogate, Harrogate",
+      "id": "9396",
+      "distance": 17.78
+    },
+    {
+      "name": "Cineworld Castleford, Castleford",
+      "id": "7506",
+      "distance": 19.09
+    }
+  ]
+}

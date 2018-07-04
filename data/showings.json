@@ -1,0 +1,53 @@
+{
+		"status": "ok",
+		"listings": [
+			{
+				"title": "Jurassic World: Fallen Kingdom",
+				"times": [
+					"17:50"
+				]
+			},
+			{
+				"title": "In The Fade",
+				"times": [
+					"20:50"
+				]
+			},
+			{
+				"title": "Ocean's 8",
+				"times": [
+					"12:55",
+					"15:25",
+					"18:00"
+				]
+			},
+			{
+				"title": "Adrift",
+				"times": [
+					"11:00",
+					"13:25",
+					"15:45",
+					"18:10"
+				]
+			},
+			{
+				"title": "Hereditary",
+				"times": [
+					"20:40"
+				]
+			},
+			{
+				"title": "The Happy Prince",
+				"times": [
+					"12:45"
+				]
+			},
+			{
+				"title": "Leave No Trace",
+				"times": [
+					"15:15",
+					"20:30"
+				]
+			}
+		]
+	}

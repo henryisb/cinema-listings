@@ -29,14 +29,14 @@ func handlerCinemas(w http.ResponseWriter, r *http.Request) {
 	pathVar := mux.Vars(r)
 	postcode := pathVar["postcode"]
 
-	cinemas := getCinemasByPostcode(postcode)
+	cinemas := getCinemasByPostcode(postcode) //getDummyCinema(postcode)
 
 	showingResponse := ShowingResponse{}
 
 	// set response for showings
 	for _, v := range cinemas.Cinemas {
 		if v.Distance < 10.0 {
-			showings := getShowingsByCinemaID(v.ID, v.Name)
+			showings := getShowingsByCinemaID(v.ID, v.Name) //getDummyShowings()
 			showingResponse.AddListing(showings.Listings, v.Name)
 		}
 	}
@@ -166,6 +166,85 @@ func getShowingsByCinemaID(id string, name string) Showings {
 
 }
 
+func getDummyShowings() Showings {
+
+	dummy := []byte(`{
+		"status": "ok",
+		"listings": [
+			{
+				"title": "Jurassic World: Fallen Kingdom",
+				"times": [
+					"17:50"
+				]
+			},
+			{
+				"title": "In The Fade",
+				"times": [
+					"20:50"
+				]
+			},
+			{
+				"title": "Ocean's 8",
+				"times": [
+					"12:55",
+					"15:25",
+					"18:00"
+				]
+			},
+			{
+				"title": "Adrift",
+				"times": [
+					"11:00",
+					"13:25",
+					"15:45",
+					"18:10"
+				]
+			},
+			{
+				"title": "Hereditary",
+				"times": [
+					"20:40"
+				]
+			},
+			{
+				"title": "The Happy Prince",
+				"times": [
+					"12:45"
+				]
+			},
+			{
+				"title": "Leave No Trace",
+				"times": [
+					"15:15",
+					"20:30"
+				]
+			}
+		]
+	}`)
+
+	showings := Showings{}
+	json.Unmarshal(dummy, &showings)
+	return showings
+
+}
+
+func getDummyCinema(postcode string) Cinema {
+	dummy := []byte(`{
+		"postcode": "yo264wy",
+		"cinemas": [
+			{
+				"name": "City Screen Picturehouse, York",
+				"id": "4370",
+				"distance": 0.66
+			}
+		]
+	}`)
+
+	cinema := Cinema{}
+	json.Unmarshal(dummy, &cinema)
+	return cinema
+}
+
 //TODO
 //  - Search by film and location
 //		- brings back all the locations within 10 miles and times for single film
@@ -189,35 +268,3 @@ func getShowingsByCinemaID(id string, name string) Showings {
 //      - title : []
 //       - venue.name : []
 //        - times
-
-// sample
-// {
-//   "postcode": "yo264wy",
-//   "cinemas": [
-//     {
-//       "name": "City Screen Picturehouse, York",
-//       "id": "4370",
-//       "distance": 0.66
-//     },
-//     {
-//       "name": "VUE York, Rawcliffe",
-//       "id": "9467",
-//       "distance": 2.1
-//     },
-//     {
-//       "name": "Wetherby Film Theatre, North Wetherby",
-//       "id": "10660",
-//       "distance": 11.9
-//     },
-//     {
-//       "name": "Odeon Harrogate, Harrogate",
-//       "id": "9396",
-//       "distance": 17.78
-//     },
-//     {
-//       "name": "Cineworld Castleford, Castleford",
-//       "id": "7506",
-//       "distance": 19.09
-//     }
-//   ]
-// }

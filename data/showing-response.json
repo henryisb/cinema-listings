@@ -1,0 +1,168 @@
+{
+  "ShowingList":[
+    {
+      "Name":"City Screen Picturehouse, York",
+      "Listing":[
+        {
+          "Title":"Jurassic World: Fallen Kingdom",
+          "Times":[
+            "17:50"
+          ]
+        },
+        {
+          "Title":"In The Fade",
+          "Times":[
+            "20:50"
+          ]
+        },
+        {
+          "Title":"Ocean's 8",
+          "Times":[
+            "12:55",
+            "15:25",
+            "18:00"
+          ]
+        },
+        {
+          "Title":"Adrift",
+          "Times":[
+            "11:00",
+            "13:25",
+            "15:45",
+            "18:10"
+          ]
+        },
+        {
+          "Title":"Hereditary",
+          "Times":[
+            "20:40"
+          ]
+        },
+        {
+          "Title":"The Happy Prince",
+          "Times":[
+            "12:45"
+          ]
+        },
+        {
+          "Title":"Leave No Trace",
+          "Times":[
+            "15:15",
+            "20:30"
+          ]
+        }
+      ]
+    },
+    {
+      "Name":"VUE York, Rawcliffe",
+      "Listing":[
+        {
+          "Title":"The Deer Hunter",
+          "Times":[
+            "19:00"
+          ]
+        },
+        {
+          "Title":"Jurassic World: Fallen Kingdom",
+          "Times":[
+            "11:55",
+            "13:30",
+            "14:45",
+            "16:45",
+            "18:50",
+            "20:05"
+          ]
+        },
+        {
+          "Title":"Deadpool 2",
+          "Times":[
+            "13:05",
+            "15:15",
+            "21:45"
+          ]
+        },
+        {
+          "Title":"Tag",
+          "Times":[
+            "12:35",
+            "14:50",
+            "17:05",
+            "19:20"
+          ]
+        },
+        {
+          "Title":"Patrick",
+          "Times":[
+            "13:05",
+            "15:50",
+            "17:50",
+            "19:50"
+          ]
+        },
+        {
+          "Title":"Solo: A Star Wars Story",
+          "Times":[
+            "15:35"
+          ]
+        },
+        {
+          "Title":"Sicario 2: Soldado",
+          "Times":[
+            "11:55",
+            "13:35",
+            "14:30",
+            "16:30",
+            "18:40",
+            "20:00",
+            "21:20"
+          ]
+        },
+        {
+          "Title":"Ocean's 8",
+          "Times":[
+            "11:55",
+            "13:20",
+            "15:00",
+            "17:30",
+            "19:30",
+            "21:30"
+          ]
+        },
+        {
+          "Title":"Adrift",
+          "Times":[
+            "12:15",
+            "14:40",
+            "17:35",
+            "19:40"
+          ]
+        },
+        {
+          "Title":"Hereditary",
+          "Times":[
+            "12:40",
+            "15:55",
+            "18:25",
+            "20:25"
+          ]
+        },
+        {
+          "Title":"Book Club",
+          "Times":[
+            "17:20"
+          ]
+        },
+        {
+          "Title":"The First Purge",
+          "Times":[
+            "12:50",
+            "15:25",
+            "18:00",
+            "20:10",
+            "22:00"
+          ]
+        }
+      ]
+    }
+  ]
+}
