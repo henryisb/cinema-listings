@@ -54,28 +54,6 @@ func newRouter() *mux.Router {
 	return r
 }
 
-// Cinema type for list of responses to get cinemas by postcode
-// type Cinema struct {
-// 	Postcode string `json:"postcode"`
-// 	Cinemas  []struct {
-// 		Name     string  `json:"name"`
-// 		ID       string  `json:"id"`
-// 		Distance float64 `json:"distance"`
-// 	} `json:"cinemas"`
-// }
-
-// // Showings structure for each cinema
-// type Showings struct {
-// 	Status   string    `json:"status"`
-// 	Listings []Listing `json:"listings"`
-// }
-
-// // Listing for each cinema
-// type Listing struct {
-// 	Title string
-// 	Times []string
-// }
-
 // ShowingList for the cinema and listing
 type ShowingList struct {
 	Name    string
@@ -94,156 +72,41 @@ func (showingResponse *ShowingResponse) AddListing(listing []services.Listing, n
 	return showingResponse.ShowingList
 }
 
-// func getCinemasByPostcode(postcode string) Cinema {
+// 	group by film?
+//	showingresp -
+//  	showinglist
+// 			getName
+//					(set object name)
+//			listing
+//				title
+//					(set times =)
+//
 
-// 	url := "http://api.cinelist.co.uk/search/cinemas/postcode/" + postcode
+// ShowingByFilm gives the showings that can be presented by per film
+type ShowingByFilm struct {
+	films []Films
+}
 
-// 	reqClient := http.Client{
-// 		Timeout: time.Second * 2,
-// 	}
+//Films that have timings for each cinema
+type Films struct {
+	name        string
+	cinemaTimes []struct {
+		name  string
+		Times []string
+	}
+}
 
-// 	req, err := http.NewRequest(http.MethodGet, url, nil)
+func (showingByFilm *ShowingByFilm) addShowing(showingResponse ShowingResponse) []Films {
 
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
+	// for _, v := showingResponse.ShowingList {
+	// 	name := v.name
+	// 	for _, a := v.Listing {
+	// 		a.Times
+	// 	}
+	// }
 
-// 	//req.Header.Set("User-Agent", "Cinema-listings")
-
-// 	res, getErr := reqClient.Do(req)
-
-// 	if getErr != nil {
-// 		log.Fatal(getErr)
-// 	}
-
-// 	body, readErr := ioutil.ReadAll(res.Body)
-
-// 	if readErr != nil {
-// 		log.Fatal(readErr)
-// 	}
-
-// 	cinemas := Cinema{}
-// 	json.Unmarshal(body, &cinemas)
-
-// 	return cinemas
-
-// }
-
-// //GetShowingsByCinemaID brings back the showings for given cinema id
-// func GetShowingsByCinemaID(id string, name string) Showings {
-
-// 	url := "http://api.cinelist.co.uk/get/times/cinema/" + id
-
-// 	reqClient := http.Client{
-// 		Timeout: time.Second * 2,
-// 	}
-
-// 	req, err := http.NewRequest(http.MethodGet, url, nil)
-
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	//req.Header.Set("User-Agent", "Cinema-listings")
-
-// 	res, getErr := reqClient.Do(req)
-
-// 	if getErr != nil {
-// 		log.Fatal(getErr)
-// 	}
-
-// 	body, readErr := ioutil.ReadAll(res.Body)
-
-// 	if readErr != nil {
-// 		log.Fatal(readErr)
-// 	}
-
-// 	showings := Showings{}
-// 	json.Unmarshal(body, &showings)
-
-// 	return showings
-
-// }
-
-// // GetDummyShowings for testing
-// func GetDummyShowings() Showings {
-
-// 	dummy := []byte(`{
-// 		"status": "ok",
-// 		"listings": [
-// 			{
-// 				"title": "Jurassic World: Fallen Kingdom",
-// 				"times": [
-// 					"17:50"
-// 				]
-// 			},
-// 			{
-// 				"title": "In The Fade",
-// 				"times": [
-// 					"20:50"
-// 				]
-// 			},
-// 			{
-// 				"title": "Ocean's 8",
-// 				"times": [
-// 					"12:55",
-// 					"15:25",
-// 					"18:00"
-// 				]
-// 			},
-// 			{
-// 				"title": "Adrift",
-// 				"times": [
-// 					"11:00",
-// 					"13:25",
-// 					"15:45",
-// 					"18:10"
-// 				]
-// 			},
-// 			{
-// 				"title": "Hereditary",
-// 				"times": [
-// 					"20:40"
-// 				]
-// 			},
-// 			{
-// 				"title": "The Happy Prince",
-// 				"times": [
-// 					"12:45"
-// 				]
-// 			},
-// 			{
-// 				"title": "Leave No Trace",
-// 				"times": [
-// 					"15:15",
-// 					"20:30"
-// 				]
-// 			}
-// 		]
-// 	}`)
-
-// 	showings := Showings{}
-// 	json.Unmarshal(dummy, &showings)
-// 	return showings
-
-// }
-
-// func getDummyCinema(postcode string) Cinema {
-// 	dummy := []byte(`{
-// 		"postcode": "yo264wy",
-// 		"cinemas": [
-// 			{
-// 				"name": "City Screen Picturehouse, York",
-// 				"id": "4370",
-// 				"distance": 0.66
-// 			}
-// 		]
-// 	}`)
-
-// 	cinema := Cinema{}
-// 	json.Unmarshal(dummy, &cinema)
-// 	return cinema
-// }
+	return nil
+}
 
 //TODO
 //  - Search by film and location
